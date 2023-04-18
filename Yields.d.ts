@@ -1,4 +1,5 @@
 export { CityImprovementContent } from './Yields/CityImprovementContent';
+export { CityImprovementMaintenanceGold } from './Yields/CityImprovementMaintenanceGold';
 export { Corruption } from './Yields/Corruption';
 export { Food } from './Yields/Food';
 export { FoodStorage } from './Yields/FoodStorage';

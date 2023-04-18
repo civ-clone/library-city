@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UnitSupportProduction = exports.UnitSupportFood = exports.Unhappiness = exports.Trade = exports.Research = exports.Production = exports.PopulationUnhappiness = exports.PopulationSupportFood = exports.MilitaryUnhappiness = exports.MartialLaw = exports.LuxuryHappiness = exports.Luxuries = exports.Happiness = exports.Gold = exports.FoodStorage = exports.Food = exports.Corruption = exports.CityImprovementContent = void 0;
+exports.UnitSupportProduction = exports.UnitSupportFood = exports.Unhappiness = exports.Trade = exports.Research = exports.Production = exports.PopulationUnhappiness = exports.PopulationSupportFood = exports.MilitaryUnhappiness = exports.MartialLaw = exports.LuxuryHappiness = exports.Luxuries = exports.Happiness = exports.Gold = exports.FoodStorage = exports.Food = exports.Corruption = exports.CityImprovementMaintenanceGold = exports.CityImprovementContent = void 0;
 var CityImprovementContent_1 = require("./Yields/CityImprovementContent");
 Object.defineProperty(exports, "CityImprovementContent", { enumerable: true, get: function () { return CityImprovementContent_1.CityImprovementContent; } });
+var CityImprovementMaintenanceGold_1 = require("./Yields/CityImprovementMaintenanceGold");
+Object.defineProperty(exports, "CityImprovementMaintenanceGold", { enumerable: true, get: function () { return CityImprovementMaintenanceGold_1.CityImprovementMaintenanceGold; } });
 var Corruption_1 = require("./Yields/Corruption");
 Object.defineProperty(exports, "Corruption", { enumerable: true, get: function () { return Corruption_1.Corruption; } });
 var Food_1 = require("./Yields/Food");
