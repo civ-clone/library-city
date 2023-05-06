@@ -125,6 +125,10 @@ export const assignWorker: (
     workedTileRegistry
   );
 
+  if (!newTile) {
+    return;
+  }
+
   workedTileRegistry.register(new WorkedTile(newTile, city));
 };
 
