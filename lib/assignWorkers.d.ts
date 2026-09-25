@@ -34,6 +34,21 @@ export declare const assignWorker: (
   cityGrowthRegistry?: CityGrowthRegistry,
   workedTileRegistry?: WorkedTileRegistry
 ) => void;
+export type WorkedTileChange = 'removed' | 'added' | 'reassigned' | 'none';
+/**
+ * Changes whether `tile` is worked by `city`, as a player clicking it on the city map would.
+ *
+ * A tile the city works stops being worked. Any other tile is worked by a free worker, if the city has one and is
+ * allowed to work it. With every worker already placed, the city's workers are reassigned instead. The city centre is
+ * always worked.
+ */
+export declare const changeWorkedTile: (
+  city: City,
+  tile: Tile,
+  playerWorldRegistry?: PlayerWorldRegistry,
+  cityGrowthRegistry?: CityGrowthRegistry,
+  workedTileRegistry?: WorkedTileRegistry
+) => WorkedTileChange;
 export declare const reduceWorkers: (
   city: City,
   cityGrowth: CityGrowth

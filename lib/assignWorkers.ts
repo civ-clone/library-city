@@ -132,6 +132,64 @@ export const assignWorker: (
   workedTileRegistry.register(new WorkedTile(newTile, city));
 };
 
+export type WorkedTileChange = 'removed' | 'added' | 'reassigned' | 'none';
+
+/**
+ * Changes whether `tile` is worked by `city`, as a player clicking it on the city map would.
+ *
+ * A tile the city works stops being worked. Any other tile is worked by a free worker, if the city has one and is
+ * allowed to work it. With every worker already placed, the city's workers are reassigned instead. The city centre is
+ * always worked.
+ */
+export const changeWorkedTile: (
+  city: City,
+  tile: Tile,
+  playerWorldRegistry?: PlayerWorldRegistry,
+  cityGrowthRegistry?: CityGrowthRegistry,
+  workedTileRegistry?: WorkedTileRegistry
+) => WorkedTileChange = (
+  city: City,
+  tile: Tile,
+  playerWorldRegistry: PlayerWorldRegistry = playerWorldRegistryInstance,
+  cityGrowthRegistry: CityGrowthRegistry = cityGrowthRegistryInstance,
+  workedTileRegistry: WorkedTileRegistry = workedTileRegistryInstance
+): WorkedTileChange => {
+  if (tile === city.tile() || !city.tiles().includes(tile)) {
+    return 'none';
+  }
+
+  if (workedTileRegistry.getByTile(tile)?.city() === city) {
+    workedTileRegistry.unregisterByTile(tile);
+
+    return 'removed';
+  }
+
+  if (
+    workedTileRegistry.getByCity(city).length >=
+    cityGrowthRegistry.getByCity(city).size() + 1
+  ) {
+    reassignWorkers(
+      city,
+      playerWorldRegistry,
+      cityGrowthRegistry,
+      workedTileRegistry
+    );
+
+    return 'reassigned';
+  }
+
+  if (
+    !workedTileRegistry.tileCanBeWorkedBy(tile, city) ||
+    !playerWorldRegistry.getByPlayer(city.player()).includes(tile)
+  ) {
+    return 'none';
+  }
+
+  workedTileRegistry.register(new WorkedTile(tile, city));
+
+  return 'added';
+};
+
 export const reduceWorkers = (city: City, cityGrowth: CityGrowth): Tile[] =>
   sortTiles(
     city
