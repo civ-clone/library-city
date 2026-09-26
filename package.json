@@ -59,6 +59,7 @@
     "@civ-clone/base-terrain-yield-food": "^0.1.0",
     "@civ-clone/base-terrain-yield-production": "^0.1.0",
     "@civ-clone/base-terrain-yield-trade": "^0.1.0",
+    "@civ-clone/core-city": "^0.1.16",
     "@civ-clone/core-city-growth": "^0.1.0",
     "@civ-clone/core-player-world": "^0.1.9"
   }
