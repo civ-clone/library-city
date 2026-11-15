@@ -10,14 +10,20 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run ts:compile && npm run prettier:format",
-    "prettier:check": "prettier --config .prettierrc '**/*.ts'",
+    "prettier:check": "prettier --config .prettierrc --check '**/*.ts'",
     "prettier:format": "prettier --config .prettierrc '**/*.ts' --write",
+    "test": "ts-mocha ./tests/*.test.ts",
     "ts:compile": "tsc --build tsconfig.json"
   },
   "devDependencies": {
-    "@types/node": "^14.0.0",
-    "prettier": "^2.0.0",
-    "typescript": "^4.0.0"
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^14.18.63",
+    "chai": "^4.5.0",
+    "mocha": "^10.8.2",
+    "prettier": "^2.8.8",
+    "ts-mocha": "^10.1.0",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "@civ-clone/base-city-improvement-aqueduct": "^0.1.0",
@@ -41,6 +47,7 @@
     "@civ-clone/base-city-improvement-sdidefence": "^0.1.0",
     "@civ-clone/base-city-improvement-temple": "^0.1.0",
     "@civ-clone/base-city-improvement-university": "^0.1.0",
+    "@civ-clone/base-city-lifecycle": "^0.1.2",
     "@civ-clone/base-city-yield-city-improvement-content": "^0.1.1",
     "@civ-clone/base-city-yield-city-improvement-maintenance-gold": "^0.1.0",
     "@civ-clone/base-city-yield-corruption": "^0.1.0",
